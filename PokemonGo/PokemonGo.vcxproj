@@ -79,11 +79,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Controlador.cpp" />
+    <ClCompile Include="Personaje.cpp" />
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="ViewPokemonGo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controlador.h" />
+    <ClInclude Include="Personaje.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="ViewPokemonGo.h">
       <FileType>CppForm</FileType>
@@ -93,6 +95,9 @@
     <EmbeddedResource Include="ViewPokemonGo.resx">
       <DependentUpon>ViewPokemonGo.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\dash\Downloads\personaje.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
