@@ -1,4 +1,6 @@
 #pragma once
+#include "Controlador.h"
+
 using namespace System::Drawing;
 enum Direcciones{ Ninguna, Arriba, Abajo, Izquierda, Derecha };
 
@@ -14,8 +16,8 @@ public:
 	~CPersonaje();
 
 	Direcciones direccion;
-	void Mover(BufferedGraphics ^buffer, Bitmap ^ash, Bitmap ^map); //, 
-	void Dibujar(BufferedGraphics ^buffer, Bitmap ^ash, Bitmap ^map); //Bitmap fondoMap 
+	void Mover(BufferedGraphics ^buffer, Bitmap ^ash, int Map[18][40], CControlador *objContr); // 
+	void Dibujar(BufferedGraphics ^buffer, Bitmap ^ash, int Map[18][40], CControlador *objContr); //Bitmap fondoMap 
 	
 };
 

@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controlador.h" />
+    <ClInclude Include="Mapas.h" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="ViewPokemonGo.h">

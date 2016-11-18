@@ -20,7 +20,7 @@ CPersonaje::~CPersonaje()
 {
 }
 
-void CPersonaje::Mover(BufferedGraphics ^buffer, Bitmap ^ash, Bitmap ^map){
+void CPersonaje::Mover(BufferedGraphics ^buffer, Bitmap ^ash, int Map[18][40], CControlador *objContr){
 
 	switch (direccion)
 	{
@@ -94,10 +94,47 @@ void CPersonaje::Mover(BufferedGraphics ^buffer, Bitmap ^ash, Bitmap ^map){
 		}
 		break;
 	}
-	Dibujar(buffer,ash, map);
+	Dibujar(buffer, ash, Map, objContr);
 }
 
-void CPersonaje::Dibujar(BufferedGraphics ^buffer, Bitmap ^img, Bitmap ^map){
+void CPersonaje::Dibujar(BufferedGraphics ^buffer, Bitmap ^img, int Map[18][40], CControlador *objContr){
+
+	Rectangle RecCamina1 = Rectangle(x + 15 * 0.39 + dx, y + 49 * 0.39, (ancho - 34) * 0.39, (alto - 54) * 0.39);
+	buffer->Graphics->DrawRectangle(Pens::Red, RecCamina1);
+	Rectangle RecCamina2 = Rectangle(x + 15 * 0.39, y + 49 * 0.39 + dy, (ancho - 34) * 0.39, (alto - 54) * 0.39);
+	buffer->Graphics->DrawRectangle(Pens::Blue, RecCamina2);
+
+	int X = 0, Y = 0;
+
+	Pen^ Pen0 = gcnew Pen(Color::Black, 3.0f);
+	Pen^ Pen1 = gcnew Pen(Color::Blue, 3.0f);
+	Pen^ Pen2 = gcnew Pen(Color::Yellow, 3.0f);
+	for (int i = 0; i < 18; i++)
+	{
+		X = 0;
+		for (int j = 0; j < 40; j++){
+			Rectangle RecValidar = Rectangle(X, Y, 25, 25);
+			//e->Graphics->DrawRectangle(blackPen, x, y, width, height); Map[i][j]*25
+			//buffer->Graphics->DrawRectangle(blackPen,0+(25*i),0+(25*j),25,25);
+			if (Map[i][j] == 0){
+				buffer->Graphics->DrawRectangle(Pen0, 0 + (25 * j), 0 + (25 * i), 25, 25);
+			}
+			if (Map[i][j] == 1){
+				buffer->Graphics->DrawRectangle(Pen1, 0 + (25 * j), 0 + (25 * i), 25, 25);
+				if (RecCamina1.IntersectsWith(RecValidar)) dx = 0;
+				if (RecCamina2.IntersectsWith(RecValidar)) dy = 0;
+			}
+			if (Map[i][j] == 2){
+				buffer->Graphics->DrawRectangle(Pen2, 0 + (25 * j), 0 + (25 * i), 25, 25);
+				//objContr->setNivel(1);
+				if (RecCamina1.IntersectsWith(RecValidar)) objContr->setNivel(1);
+				if (RecCamina2.IntersectsWith(RecValidar)) objContr->setNivel(1);
+			}
+			X = X + 25;
+		}
+		Y = Y + 25;
+	}
+
 	Rectangle PorcionUsar = Rectangle(ancho*indiceX,alto*indiceY,ancho,alto);
 	Rectangle Aumento = Rectangle(x,y,ancho*0.5,ancho*0.5);
 	buffer->Graphics->DrawImage(img,Aumento,PorcionUsar,GraphicsUnit::Pixel);

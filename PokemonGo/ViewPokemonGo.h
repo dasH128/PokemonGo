@@ -1,7 +1,7 @@
 #pragma once
 #include "Personaje.h"
-
-
+#include "Controlador.h"
+#include  "Mapas.h"
 namespace PokemonGo {
 
 	using namespace System;
@@ -17,17 +17,21 @@ namespace PokemonGo {
 	public ref class ViewPokemonGo : public System::Windows::Forms::Form
 	{
 	private:
+		CControlador *objControlador = new CControlador(0);
 		Graphics ^g;
 		BufferedGraphicsContext ^espacio;
 		BufferedGraphics ^buffer;
 
-		CPersonaje *oPersonaje = new CPersonaje(50,30);
+		CPersonaje *oPersonaje = new CPersonaje(25,30);
 
 
 
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
 			 Bitmap ^ash = gcnew Bitmap("imagen/personaje2.png");
 			 Bitmap ^Map = gcnew Bitmap("imagen/mapPokemon.png"); 
+			 /*
+			 los mapas 
+			 */
 
 	public:
 		ViewPokemonGo(void)
@@ -95,7 +99,7 @@ namespace PokemonGo {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(919, 489);
+			this->ClientSize = System::Drawing::Size(999, 452);
 			this->Controls->Add(this->pictureBox1);
 			this->Name = L"ViewPokemonGo";
 			this->Text = L"ViewPokemonGo";
@@ -135,12 +139,26 @@ namespace PokemonGo {
 		
 		CrearBuffer();
 		
-				
+		if (objControlador->getNivel() == 0 ){
+
+		}
+		if (objControlador->getNivel() == 1){
+
+		}
+		if (objControlador->getNivel() == 2){
+
+		}
+		if (objControlador->getNivel() == 3){
+
+		}
+		if (objControlador->getNivel() == 4){
+
+		}
 		//Rectangle recFondo = Rectangle(0,0,imgMap->Width, imgMap->Height);
 		//g->DrawImage(imgMap,g->VisibleClipBounds,recFondo, GraphicsUnit::Pixel);
 		//buffer->Graphics->DrawImage(Map, 0, 0,recFondo, GraphicsUnit::Pixel );
 		buffer->Graphics->DrawImage(Map, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
-		oPersonaje->Mover(buffer, ash, Map);
+		oPersonaje->Mover(buffer, ash, MapaPrincipal, objControlador);
 		//oPersonaje->DibujarMap(buffer, Map,this->ClientSize.Width,this->ClientSize.Height);
 		buffer->Render(g);
 

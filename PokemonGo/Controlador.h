@@ -2,7 +2,13 @@
 class CControlador
 {
 public:
-	CControlador();
+	int nivel;
+
+public:
+	CControlador(int nivel);
 	~CControlador();
+
+	int getNivel();
+	void setNivel(int nivel);
 };
 
