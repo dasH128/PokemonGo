@@ -100,9 +100,9 @@ void CPersonaje::Mover(BufferedGraphics ^buffer, Bitmap ^ash, int Map[18][40], C
 void CPersonaje::Dibujar(BufferedGraphics ^buffer, Bitmap ^img, int Map[18][40], CControlador *objContr){
 
 	Rectangle RecCamina1 = Rectangle(x + 15 * 0.39 + dx, y + 49 * 0.39, (ancho - 34) * 0.39, (alto - 54) * 0.39);
-	buffer->Graphics->DrawRectangle(Pens::Red, RecCamina1);
+	//buffer->Graphics->DrawRectangle(Pens::Red, RecCamina1);
 	Rectangle RecCamina2 = Rectangle(x + 15 * 0.39, y + 49 * 0.39 + dy, (ancho - 34) * 0.39, (alto - 54) * 0.39);
-	buffer->Graphics->DrawRectangle(Pens::Blue, RecCamina2);
+	//buffer->Graphics->DrawRectangle(Pens::Blue, RecCamina2);
 
 	int X = 0, Y = 0;
 
@@ -117,7 +117,7 @@ void CPersonaje::Dibujar(BufferedGraphics ^buffer, Bitmap ^img, int Map[18][40],
 			//e->Graphics->DrawRectangle(blackPen, x, y, width, height); Map[i][j]*25
 			//buffer->Graphics->DrawRectangle(blackPen,0+(25*i),0+(25*j),25,25);
 			if (Map[i][j] == 0){
-				buffer->Graphics->DrawRectangle(Pen0, 0 + (25 * j), 0 + (25 * i), 25, 25);
+				//buffer->Graphics->DrawRectangle(Pen0, 0 + (25 * j), 0 + (25 * i), 25, 25);
 			}
 			if (Map[i][j] == 1){
 				buffer->Graphics->DrawRectangle(Pen1, 0 + (25 * j), 0 + (25 * i), 25, 25);
@@ -126,9 +126,25 @@ void CPersonaje::Dibujar(BufferedGraphics ^buffer, Bitmap ^img, int Map[18][40],
 			}
 			if (Map[i][j] == 2){
 				buffer->Graphics->DrawRectangle(Pen2, 0 + (25 * j), 0 + (25 * i), 25, 25);
-				//objContr->setNivel(1);
-				if (RecCamina1.IntersectsWith(RecValidar)) objContr->setNivel(1);
-				if (RecCamina2.IntersectsWith(RecValidar)) objContr->setNivel(1);
+
+				if (RecCamina1.IntersectsWith(RecValidar)){
+					objContr->setNivel(1);	this->x = 950;	this->y = 200;
+				} 
+				if (RecCamina2.IntersectsWith(RecValidar)){
+					objContr->setNivel(1);	this->x = 950;	this->y = 200;
+				} 
+
+			}
+			if (Map[i][j] == 3){
+				buffer->Graphics->DrawRectangle(Pen2, 0 + (25 * j), 0 + (25 * i), 25, 25);
+
+				if (RecCamina1.IntersectsWith(RecValidar)){
+					objContr->setNivel(0);	this->x = 30;	this->y = 250;
+				}
+				if (RecCamina2.IntersectsWith(RecValidar)){
+					objContr->setNivel(0);	this->x = 300;	this->y = 250;
+				}
+
 			}
 			X = X + 25;
 		}

@@ -27,8 +27,10 @@ namespace PokemonGo {
 
 
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
+			 //MapParque Bitmap ^Map = gcnew Bitmap("imagen/mapPokemon.png"); 
 			 Bitmap ^ash = gcnew Bitmap("imagen/personaje2.png");
-			 Bitmap ^Map = gcnew Bitmap("imagen/mapPokemon.png"); 
+			 Bitmap ^Map0 = gcnew Bitmap("imagen/mapPokemon.png");
+			 Bitmap ^Map1 = gcnew Bitmap("imagen/MapParque.png"); 
 			 /*
 			 los mapas 
 			 */
@@ -140,10 +142,12 @@ namespace PokemonGo {
 		CrearBuffer();
 		
 		if (objControlador->getNivel() == 0 ){
-
+			buffer->Graphics->DrawImage(Map0, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
+			oPersonaje->Mover(buffer, ash, MapaPrincipal, objControlador);
 		}
 		if (objControlador->getNivel() == 1){
-
+			buffer->Graphics->DrawImage(Map1, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
+			oPersonaje->Mover(buffer, ash, MapaParquel, objControlador);
 		}
 		if (objControlador->getNivel() == 2){
 
@@ -157,8 +161,7 @@ namespace PokemonGo {
 		//Rectangle recFondo = Rectangle(0,0,imgMap->Width, imgMap->Height);
 		//g->DrawImage(imgMap,g->VisibleClipBounds,recFondo, GraphicsUnit::Pixel);
 		//buffer->Graphics->DrawImage(Map, 0, 0,recFondo, GraphicsUnit::Pixel );
-		buffer->Graphics->DrawImage(Map, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
-		oPersonaje->Mover(buffer, ash, MapaPrincipal, objControlador);
+
 		//oPersonaje->DibujarMap(buffer, Map,this->ClientSize.Width,this->ClientSize.Height);
 		buffer->Render(g);
 
