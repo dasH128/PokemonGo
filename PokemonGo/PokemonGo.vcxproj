@@ -81,6 +81,7 @@
     <ClCompile Include="Controlador.cpp" />
     <ClCompile Include="Personaje.cpp" />
     <ClCompile Include="Pokemon.cpp" />
+    <ClCompile Include="ViewAtraparPokemon.cpp" />
     <ClCompile Include="ViewPokedex.cpp" />
     <ClCompile Include="ViewPokemonGo.cpp" />
   </ItemGroup>
@@ -89,6 +90,9 @@
     <ClInclude Include="Mapas.h" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Pokemon.h" />
+    <ClInclude Include="ViewAtraparPokemon.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ViewPokedex.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -97,6 +101,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ViewAtraparPokemon.resx">
+      <DependentUpon>ViewAtraparPokemon.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewPokedex.resx">
       <DependentUpon>ViewPokedex.h</DependentUpon>
     </EmbeddedResource>

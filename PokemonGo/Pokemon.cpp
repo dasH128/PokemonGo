@@ -15,8 +15,12 @@
 12 hielo
 13 dragon
 */
-CPokemon::CPokemon(int id)
+CPokemon::CPokemon(int id, int x, int y, int a, int h)
 {
+	this->x = x;
+	this->y = y;
+	this->a = a;
+	this->h = h;
 	nombre = new char[20];
 	switch (id)
 	{
@@ -171,6 +175,7 @@ CPokemon::CPokemon(int id)
 		case 149: nombre = "Drafonite", tipo = 13; break;
 		case 150: nombre = "Mewtwo", tipo = 9; break;
 		case 151: nombre = "Mew", tipo = 9; break;
+
 		
 	}
 }
@@ -182,7 +187,10 @@ CPokemon::~CPokemon()
 void CPokemon::CrearPokemon(){
 
 }
-void CPokemon::Pintar(){
+void CPokemon::Pintar(Graphics ^g, int id){
+	
+	Rectangle porcionUsada = Rectangle(0,0,this->a,this->h);
+	Rectangle pintar = Rectangle(x,y,a,h);
 	Bitmap ^img;
 	switch (id)
 	{
@@ -337,5 +345,15 @@ void CPokemon::Pintar(){
 	case 149: img = gcnew Bitmap("imagen/pokedex/149.png"); break;
 	case 150: img = gcnew Bitmap("imagen/pokedex/150.png"); break;
 	}
+
+	g->DrawImage(img, pintar, porcionUsada, GraphicsUnit::Pixel);
+}
+
+void CPokemon::PokemonInicial(){
+	CPokemon *Zapdos = new CPokemon(145,200,90,50,50); PokeIniciales.push_back(Zapdos);
+	CPokemon *Moltres = new CPokemon(146,260,90,50,50); PokeIniciales.push_back(Moltres);
+	CPokemon *Articuno = new CPokemon(144,320,90,50,50); PokeIniciales.push_back(Articuno);
+	CPokemon *Mewtow = new CPokemon(150,380,90,50,50); PokeIniciales.push_back(Mewtow);
+	
 
 }

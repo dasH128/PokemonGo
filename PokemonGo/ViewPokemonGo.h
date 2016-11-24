@@ -2,6 +2,11 @@
 #include "Personaje.h"
 #include "Controlador.h"
 #include  "Mapas.h"
+#include "Pokemon.h"
+
+
+#include "ViewPokedex.h"
+#include "ViewAtraparPokemon.h"
 namespace PokemonGo {
 
 	using namespace System;
@@ -23,7 +28,7 @@ namespace PokemonGo {
 		BufferedGraphics ^buffer;
 
 		CPersonaje *oPersonaje = new CPersonaje(25,30);
-
+		CPokemon *oPokemon;
 
 
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
@@ -42,6 +47,7 @@ namespace PokemonGo {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			//oPokemon = new CPokemon();
 			ash->MakeTransparent(ash->GetPixel(1, 1));
 
 		}
@@ -105,6 +111,7 @@ namespace PokemonGo {
 			this->Controls->Add(this->pictureBox1);
 			this->Name = L"ViewPokemonGo";
 			this->Text = L"ViewPokemonGo";
+			this->Load += gcnew System::EventHandler(this, &ViewPokemonGo::ViewPokemonGo_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &ViewPokemonGo::Presionar);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &ViewPokemonGo::Soltar);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -132,7 +139,12 @@ namespace PokemonGo {
 		case Keys::Down:
 			oPersonaje->direccion = Direcciones::Abajo;
 			break;
+		case Keys::Q:
+			ViewPokedex^ pokedex = gcnew ViewPokedex();
+			pokedex->Show();
+			break;
 		}
+
 	}
 	private: System::Void Soltar(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) {
 		oPersonaje->direccion = Direcciones::Ninguna;
@@ -142,6 +154,7 @@ namespace PokemonGo {
 		CrearBuffer();
 		
 		if (objControlador->getNivel() == 0 ){
+
 			buffer->Graphics->DrawImage(Map0, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
 			oPersonaje->Mover(buffer, ash, MapaPrincipal, objControlador);
 		}
@@ -170,5 +183,8 @@ namespace PokemonGo {
 	}
 	private: System::Void pictureBox1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
+	private: System::Void ViewPokemonGo_Load(System::Object^  sender, System::EventArgs^  e) {
+		oPokemon->
+}
 };
 }

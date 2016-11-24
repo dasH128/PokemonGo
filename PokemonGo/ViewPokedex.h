@@ -56,7 +56,7 @@ namespace PokemonGo {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(465, 613);
 			this->Name = L"ViewPokedex";
-			this->Text = L"ViewPokedex";
+			this->Text = L"Pokedex";
 			this->ResumeLayout(false);
 
 		}
