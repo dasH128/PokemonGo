@@ -19,6 +19,7 @@ public:
 
 	void PokemonesInciales();
 	void PintarIniciales(BufferedGraphics ^buffer); //void PintarIniciales(BufferedGraphics ^buffer);
-	
+	bool ClickPokemon(int PosXMouse, int PosYMouse);
+
 };
 

@@ -22,7 +22,7 @@ Class PokemonGo.ViewAtraparPokemon: AutoLayout, AnsiClass, Class, Public, Before
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class PokemonGo.ViewDialogo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String, CControlador*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class PokemonGo.ViewPokedex: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

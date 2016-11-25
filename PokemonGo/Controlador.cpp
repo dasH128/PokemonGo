@@ -38,3 +38,12 @@ void CControlador::PintarIniciales(BufferedGraphics ^buffer){ //void PintarInici
 		FirstPokemon[i]->Pintar(buffer, FirstPokemon[i]->getId());
 	}
 }
+
+bool CControlador::ClickPokemon(int PosXMouse, int PosYMouse){
+	for (int i = 0; i < FirstPokemon.size(); i++)
+	{
+		if (FirstPokemon[i]->SelectPokemon(PosXMouse, PosYMouse) == true){
+			return true;
+		}
+	}
+}

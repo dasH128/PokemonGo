@@ -194,8 +194,11 @@ namespace PokemonGo {
 }
 	private: System::Void Evento_DobleClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 
-		ViewDialogo^ msj = gcnew ViewDialogo("Desea Elegir este Pokemon ???");
-		msj->ShowDialog();
+		if (objControlador->ClickPokemon(e->X, e->Y)== true){
+			ViewDialogo^ msj = gcnew ViewDialogo("Desea Elegir este Pokemon ??? ", objControlador);
+			msj->ShowDialog();
+		}
+
 	}
 };
 }

@@ -21,6 +21,7 @@ public:
 	CPokemon(int id, int x, int y);
 	void CrearPokemon();
 	void Pintar(BufferedGraphics ^buffer, int id);
+	bool SelectPokemon(int PosXMouse, int PosYMouse);
 
 	int getId();
 };

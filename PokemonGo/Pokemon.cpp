@@ -193,8 +193,7 @@ void CPokemon::CrearPokemon(){
 void CPokemon::Pintar(BufferedGraphics ^buffer, int id){
 	
 	Bitmap ^img;
-	//img = gcnew Bitmap("imagen/pokedex/001.png");
-	//id = 150;
+
 	switch (id)
 	{
 	case 1: img = gcnew Bitmap("imagen/pokedex/001.png"); break;
@@ -349,14 +348,23 @@ void CPokemon::Pintar(BufferedGraphics ^buffer, int id){
 	case 150: img = gcnew Bitmap("imagen/pokedex/150.png"); break;
 	}
 
-	Rectangle PorcionUsar = Rectangle(0, 0, a, h);
-	Rectangle Aumento = Rectangle(x, y, a*0.5, h*0.5);
+	Rectangle PorcionUsar = Rectangle(0, 0, h, a);
+	Rectangle Aumento = Rectangle(x, y, h*0.3, a*0.3);
 
 	buffer->Graphics->DrawImage(img,Aumento,PorcionUsar,GraphicsUnit::Pixel);
 	
 	//g->DrawImage(img, pintar, porcionUsada, GraphicsUnit::Pixel);
 }
 
+bool CPokemon::SelectPokemon(int PosXMouse, int PosYMouse){
+	bool devolver = false;
+	if ((PosXMouse > x && PosXMouse <x + h*0.3) && (PosYMouse > y && PosYMouse <y + a*0.3))
+	{
+		devolver = true;
+	}
+
+	return devolver;
+}
 
 int CPokemon::getId(){
 	return this->id;

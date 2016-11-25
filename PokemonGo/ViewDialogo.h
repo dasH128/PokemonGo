@@ -1,4 +1,5 @@
 #pragma once
+#include "Controlador.h"
 
 namespace PokemonGo {
 
@@ -17,10 +18,10 @@ namespace PokemonGo {
 	private:
 		String^ Mensaje;
 	public:
-		ViewDialogo(String^ msj)
+		ViewDialogo(String^ msj, CControlador *objControlador)
 		{
 			InitializeComponent();
-			Mensaje = msj;
+			Mensaje = msj+ " francheska " +objControlador->getNivel();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -38,6 +39,7 @@ namespace PokemonGo {
 			}
 		}
 	private: System::Windows::Forms::Label^  lb_msj;
+	private: System::Windows::Forms::Button^  button1;
 	protected:
 
 	private:
@@ -54,21 +56,37 @@ namespace PokemonGo {
 		void InitializeComponent(void)
 		{
 			this->lb_msj = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// lb_msj
 			// 
-			this->lb_msj->Location = System::Drawing::Point(187, 9);
+			this->lb_msj->BackColor = System::Drawing::SystemColors::Control;
+			this->lb_msj->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->lb_msj->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_msj->Location = System::Drawing::Point(187, 27);
 			this->lb_msj->Name = L"lb_msj";
-			this->lb_msj->Size = System::Drawing::Size(281, 137);
+			this->lb_msj->Size = System::Drawing::Size(281, 119);
 			this->lb_msj->TabIndex = 0;
 			this->lb_msj->Text = L"label1";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(259, 180);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(186, 42);
+			this->button1->TabIndex = 1;
+			this->button1->Text = L"Aceptar";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &ViewDialogo::button1_Click);
 			// 
 			// ViewDialogo
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(480, 248);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->lb_msj);
 			this->Name = L"ViewDialogo";
 			this->Text = L"ViewDialogo";
@@ -81,5 +99,8 @@ namespace PokemonGo {
 		lb_msj->Text = Mensaje;
 	}
 
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	}
 	};
 }
