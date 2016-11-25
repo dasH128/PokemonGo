@@ -4,7 +4,7 @@
 #include  "Mapas.h"
 #include "Pokemon.h"
 
-
+#include "ViewDialogo.h"
 #include "ViewPokedex.h"
 #include "ViewAtraparPokemon.h"
 namespace PokemonGo {
@@ -28,14 +28,15 @@ namespace PokemonGo {
 		BufferedGraphics ^buffer;
 
 		CPersonaje *oPersonaje = new CPersonaje(25,30);
-		CPokemon *oPokemon;
 
 
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
 			 //MapParque Bitmap ^Map = gcnew Bitmap("imagen/mapPokemon.png"); 
 			 Bitmap ^ash = gcnew Bitmap("imagen/personaje2.png");
-			 Bitmap ^Map0 = gcnew Bitmap("imagen/mapPokemon.png");
-			 Bitmap ^Map1 = gcnew Bitmap("imagen/MapParque.png"); 
+			 Bitmap ^Map0 = gcnew Bitmap("imagen/mapCasa.png");
+			 Bitmap ^Map1 = gcnew Bitmap("imagen/mapPokemon.png");
+			 Bitmap ^Map2 = gcnew Bitmap("imagen/MapParque.png");
+
 			 /*
 			 los mapas 
 			 */
@@ -114,6 +115,7 @@ namespace PokemonGo {
 			this->Load += gcnew System::EventHandler(this, &ViewPokemonGo::ViewPokemonGo_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &ViewPokemonGo::Presionar);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &ViewPokemonGo::Soltar);
+			this->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &ViewPokemonGo::Evento_DobleClick);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
@@ -154,16 +156,19 @@ namespace PokemonGo {
 		CrearBuffer();
 		
 		if (objControlador->getNivel() == 0 ){
-
 			buffer->Graphics->DrawImage(Map0, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
-			oPersonaje->Mover(buffer, ash, MapaPrincipal, objControlador);
+			oPersonaje->Mover(buffer, ash, MapaCasa, objControlador);
+			//objControlador
+			objControlador->PintarIniciales(buffer);//	objControlador->PintarIniciales(buffer);
+			
 		}
 		if (objControlador->getNivel() == 1){
 			buffer->Graphics->DrawImage(Map1, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
-			oPersonaje->Mover(buffer, ash, MapaParquel, objControlador);
+			oPersonaje->Mover(buffer, ash, MapaPrincipal, objControlador);
 		}
 		if (objControlador->getNivel() == 2){
-
+			buffer->Graphics->DrawImage(Map2, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
+			oPersonaje->Mover(buffer, ash, MapaParquel, objControlador);
 		}
 		if (objControlador->getNivel() == 3){
 
@@ -184,7 +189,13 @@ namespace PokemonGo {
 	private: System::Void pictureBox1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 	private: System::Void ViewPokemonGo_Load(System::Object^  sender, System::EventArgs^  e) {
-		oPokemon->
+		//oPokemon->PokemonInicial();
+		//objControlador->PokemonesInciales();
 }
+	private: System::Void Evento_DobleClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+
+		ViewDialogo^ msj = gcnew ViewDialogo("Desea Elegir este Pokemon ???");
+		msj->ShowDialog();
+	}
 };
 }

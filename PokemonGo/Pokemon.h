@@ -5,8 +5,9 @@ using namespace System::Drawing;
 
 class CPokemon
 {
-	vector <CPokemon*> PokeIniciales;
+	
 private:
+	
 	int x, y, a, h;
 	int id;
 	char *nombre;
@@ -14,11 +15,13 @@ private:
 	int atk1, atk2, atk3, atk4;
 
 public:
-	CPokemon(int id, int x, int y, int a, int h);
+	CPokemon();
 	~CPokemon();
 
+	CPokemon(int id, int x, int y);
 	void CrearPokemon();
-	void Pintar(Graphics ^g, int id);
-	void PokemonInicial();
+	void Pintar(BufferedGraphics ^buffer, int id);
+
+	int getId();
 };
 

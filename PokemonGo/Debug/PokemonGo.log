@@ -1,9 +1,22 @@
-﻿Build started 23/11/2016 07:29:43 p.m..
+﻿Build started 25/11/2016 04:02:23 a.m..
      1>Project "C:\Users\dash\Documents\GitHub\PokemonGo\PokemonGo\PokemonGo.vcxproj" on node 2 (Build target(s)).
-     1>Link:
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib ViewDialogo.cpp ViewPokemonGo.cpp
+         ViewDialogo.cpp
+         ViewPokemonGo.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\dash\Documents\GitHub\PokemonGo\Debug\PokemonGo.exe" /INCREMENTAL /NOLOGO /ASSEMBLYRESOURCE:Debug\PokemonGo.ViewAtraparPokemon.resources /ASSEMBLYRESOURCE:Debug\PokemonGo.ViewDialogo.resources /ASSEMBLYRESOURCE:Debug\PokemonGo.ViewPokedex.resources /ASSEMBLYRESOURCE:Debug\PokemonGo.ViewPokemonGo.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\dash\Documents\GitHub\PokemonGo\Debug\PokemonGo.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\Controlador.obj
+         Debug\Personaje.obj
+         Debug\Pokemon.obj
+         Debug\ViewAtraparPokemon.obj
+         Debug\ViewDialogo.obj
+         Debug\ViewPokedex.obj
+         Debug\ViewPokemonGo.obj
+         "Debug\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
          PokemonGo.vcxproj -> C:\Users\dash\Documents\GitHub\PokemonGo\Debug\PokemonGo.exe
      1>Done Building Project "C:\Users\dash\Documents\GitHub\PokemonGo\PokemonGo\PokemonGo.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.16
+Time Elapsed 00:00:00.94

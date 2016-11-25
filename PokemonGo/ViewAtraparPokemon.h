@@ -48,15 +48,19 @@ namespace PokemonGo {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(ViewAtraparPokemon::typeid));
 			this->SuspendLayout();
 			// 
 			// ViewAtraparPokemon
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(363, 549);
+			this->BackColor = System::Drawing::SystemColors::ScrollBar;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->ClientSize = System::Drawing::Size(453, 765);
 			this->Name = L"ViewAtraparPokemon";
-			this->Text = L"ViewAtraparPokemon";
+			this->Text = L"Atrapar Pokemon";
 			this->ResumeLayout(false);
 
 		}

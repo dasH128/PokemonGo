@@ -109,6 +109,7 @@ void CPersonaje::Dibujar(BufferedGraphics ^buffer, Bitmap ^img, int Map[18][40],
 	Pen^ Pen0 = gcnew Pen(Color::Black, 3.0f);
 	Pen^ Pen1 = gcnew Pen(Color::Blue, 3.0f);
 	Pen^ Pen2 = gcnew Pen(Color::Yellow, 3.0f);
+	Pen^ Pen3 = gcnew Pen(Color::Green, 3.0f);
 	for (int i = 0; i < 18; i++)
 	{
 		X = 0;
@@ -128,10 +129,10 @@ void CPersonaje::Dibujar(BufferedGraphics ^buffer, Bitmap ^img, int Map[18][40],
 				buffer->Graphics->DrawRectangle(Pen2, 0 + (25 * j), 0 + (25 * i), 25, 25);
 
 				if (RecCamina1.IntersectsWith(RecValidar)){
-					objContr->setNivel(1);	this->x = 950;	this->y = 200;
+					objContr->setNivel(2);	this->x = 950;	this->y = 200;
 				} 
 				if (RecCamina2.IntersectsWith(RecValidar)){
-					objContr->setNivel(1);	this->x = 950;	this->y = 200;
+					objContr->setNivel(2);	this->x = 950;	this->y = 200;
 				} 
 
 			}
@@ -139,12 +140,37 @@ void CPersonaje::Dibujar(BufferedGraphics ^buffer, Bitmap ^img, int Map[18][40],
 				buffer->Graphics->DrawRectangle(Pen2, 0 + (25 * j), 0 + (25 * i), 25, 25);
 
 				if (RecCamina1.IntersectsWith(RecValidar)){
-					objContr->setNivel(0);	this->x = 30;	this->y = 250;
+					objContr->setNivel(1);	this->x = 30;	this->y = 250;
 				}
 				if (RecCamina2.IntersectsWith(RecValidar)){
-					objContr->setNivel(0);	this->x = 300;	this->y = 250;
+					objContr->setNivel(1);	this->x = 30;	this->y = 250;
 				}
 
+			}
+			if (Map[i][j] == 4){
+				buffer->Graphics->DrawRectangle(Pen2, 0 + (25 * j), 0 + (25 * i), 25, 25);
+
+				if (RecCamina1.IntersectsWith(RecValidar)){
+					objContr->setNivel(1);	this->x = 450;	this->y = 20;
+				}
+				if (RecCamina2.IntersectsWith(RecValidar)){
+					objContr->setNivel(1);	this->x = 450;	this->y = 20;
+				}
+
+			}
+			if (Map[i][j] == 5){
+				buffer->Graphics->DrawRectangle(Pen2, 0 + (25 * j), 0 + (25 * i), 25, 25);
+
+				if (RecCamina1.IntersectsWith(RecValidar)){
+					objContr->setNivel(0);	this->x = 450;	this->y = 400;
+				}
+				if (RecCamina2.IntersectsWith(RecValidar)){
+					objContr->setNivel(0);	this->x = 450;	this->y = 400;
+				}
+
+			}
+			if (Map[i][j] == 10){
+				buffer->Graphics->DrawRectangle(Pen3, 0 + (25 * j), 0 + (25 * i), 25, 25);
 			}
 			X = X + 25;
 		}
@@ -160,3 +186,23 @@ void CPersonaje::Dibujar(BufferedGraphics ^buffer, Bitmap ^img, int Map[18][40],
 }
 
 
+
+
+
+int  CPersonaje::getPokeball(){ return Pokeball; }
+int  CPersonaje::getPociones(){ return Pociones; }
+int  CPersonaje::getRevivir(){ return Revivir; }
+int  CPersonaje::getMonedas(){ return Monedas; }
+int  CPersonaje::getExperiencia(){ return Experiencia; }
+bool CPersonaje::getMaestroPokemon(){ return MaestroPokemon; }
+	
+void CPersonaje::setPokeball(int valor){ Pokeball = valor; }
+void CPersonaje::setPociones(int valor){ Pociones = valor; }
+void CPersonaje::setRevivir(int valor){ Revivir = valor; }
+void CPersonaje::setMonedas(int valor){ Monedas = valor; }
+void CPersonaje::setExperiencia(int valor){ Experiencia = valor; }
+void CPersonaje::setMaestroPokemon(bool valor){ MaestroPokemon = valor; }
+
+CPokemon * CPersonaje::getPokemon(int pos){ return MyPokemon[pos]; }
+
+void CPersonaje::GuardarPokemon(CPokemon *nuevo){ MyPokemon.push_back(nuevo); }
