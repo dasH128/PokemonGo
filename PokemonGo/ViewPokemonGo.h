@@ -6,6 +6,7 @@
 
 #include "ViewDialogo.h"
 #include "ViewPokedex.h"
+#include "ViewPerfil.h"
 #include "ViewAtraparPokemon.h"
 namespace PokemonGo {
 
@@ -141,10 +142,19 @@ namespace PokemonGo {
 		case Keys::Down:
 			oPersonaje->direccion = Direcciones::Abajo;
 			break;
+		/*case Keys::W:
+			ViewPerfil^ perfil = gcnew ViewPerfil(oPersonaje);
+			perfil->Show();
+			break;*/
 		case Keys::Q:
 			ViewPokedex^ pokedex = gcnew ViewPokedex();
 			pokedex->Show();
 			break;
+		}
+
+		if (e->KeyCode == Keys::W){
+			ViewPerfil^ perfil = gcnew ViewPerfil(oPersonaje);
+			perfil->Show();
 		}
 
 	}
@@ -169,6 +179,7 @@ namespace PokemonGo {
 		if (objControlador->getNivel() == 2){
 			buffer->Graphics->DrawImage(Map2, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
 			oPersonaje->Mover(buffer, ash, MapaParquel, objControlador);
+			objControlador->PintarIniciales(buffer);
 		}
 		if (objControlador->getNivel() == 3){
 
@@ -193,11 +204,22 @@ namespace PokemonGo {
 		//objControlador->PokemonesInciales();
 }
 	private: System::Void Evento_DobleClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-
-		if (objControlador->ClickPokemon(e->X, e->Y)== true){
-			ViewDialogo^ msj = gcnew ViewDialogo("Desea Elegir este Pokemon ??? ", objControlador);
+		CPokemon *oPokem = new CPokemon();
+		if (objControlador->ClickPokemon(e->X, e->Y, oPokem) == true){
+			int pos=0;
+			ViewDialogo^ msj = gcnew ViewDialogo("Desea Elegir este Pokemon ??? ", objControlador, pos);
 			msj->ShowDialog();
 		}
+
+		if (objControlador->ClickPokeparada(e->X, e->Y) == true){
+			int pos = -1;
+			ViewDialogo^ msj = gcnew ViewDialogo("En hora buena usted gano: + 3 Pokebal +1Revivir ", objControlador, pos);
+			oPersonaje->setPokeball(oPersonaje->getPokeball()+3);
+			oPersonaje->setRevivir(oPersonaje->getRevivir() + 1);
+			msj->ShowDialog();
+		}
+
+
 
 	}
 };

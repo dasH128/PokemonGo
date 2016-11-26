@@ -34,6 +34,8 @@ namespace PokemonGo {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Label^  label1;
+	protected:
 
 	private:
 		/// <summary>
@@ -48,16 +50,30 @@ namespace PokemonGo {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(186, 18);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(81, 17);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"POKEDEX";
 			// 
 			// ViewPokedex
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(465, 613);
+			this->Controls->Add(this->label1);
 			this->Name = L"ViewPokedex";
 			this->Text = L"Pokedex";
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion

@@ -24,7 +24,7 @@ namespace PokemonGo {
 		bool coge, press;
 
 	public:
-		ViewAtraparPokemon(void)
+		ViewAtraparPokemon(CPokemon *oPokemon)
 		{
 			InitializeComponent();
 			//

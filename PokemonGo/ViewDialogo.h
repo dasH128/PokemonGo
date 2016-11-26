@@ -1,5 +1,6 @@
 #pragma once
 #include "Controlador.h"
+#include "ViewAtraparPokemon.h"
 
 namespace PokemonGo {
 
@@ -17,11 +18,14 @@ namespace PokemonGo {
 	{
 	private:
 		String^ Mensaje;
+		int s;
 	public:
-		ViewDialogo(String^ msj, CControlador *objControlador)
+		ViewDialogo(String^ msj, CControlador *objControlador, int pos)
 		{
 			InitializeComponent();
-			Mensaje = msj+ " francheska " +objControlador->getNivel();
+			s = pos;
+			Mensaje = msj + "  " ;
+			
 			//
 			//TODO: Add the constructor code here
 			//
@@ -100,6 +104,23 @@ namespace PokemonGo {
 	}
 
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		
+		if (s==-1 )
+		{
+			ViewAtraparPokemon^ atrapalo = gcnew ViewAtraparPokemon(NULL);
+			this->Close();
+
+		}
+		if (s>=0 )
+		{
+			ViewAtraparPokemon^ atrapalo = gcnew ViewAtraparPokemon(NULL);
+			this->Close();
+
+			atrapalo->Show();
+		}
+
+
+
 
 	}
 	};

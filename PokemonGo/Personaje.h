@@ -15,6 +15,8 @@ private:
 	int Pociones;
 	int Revivir;
 	int Monedas;
+	int PolvoEstelar;
+	int Caramelo;
 	int Experiencia;
 	bool MaestroPokemon;
 	vector <CPokemon*> MyPokemon;
@@ -34,6 +36,8 @@ public:
 	int getPociones();
 	int getRevivir();
 	int getMonedas();
+	int getPolvoEstelar();
+	int getCaramelo();
 	int getExperiencia();
 	bool getMaestroPokemon();
 
@@ -41,12 +45,15 @@ public:
 	void setPociones(int valor);
 	void setRevivir(int valor);
 	void setMonedas(int valor);
+	void setCaramelo(int valor);
+	void setPolvoEstelar(int valor);
 	void setExperiencia(int valor);
 	void setMaestroPokemon(bool valor);
 
+	int getNPokemon();
 	CPokemon *getPokemon(int pos);
 	void GuardarPokemon(CPokemon *nuevo);
-
-
+	void TransferirPokemon(int pos);
+	void DarPuntoCosmico(int pos);
 };		   
 

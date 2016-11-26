@@ -1,5 +1,6 @@
   PokemonGo.ViewAtraparPokemon.resources - Embedded, ContainedInManifestFile, 
   PokemonGo.ViewDialogo.resources - Embedded, ContainedInManifestFile, 
+  PokemonGo.ViewPerfil.resources - Embedded, ContainedInManifestFile, 
   PokemonGo.ViewPokedex.resources - Embedded, ContainedInManifestFile, 
   PokemonGo.ViewPokemonGo.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
@@ -19,10 +20,13 @@ Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c5619
 	hash=None, flags=None
 Class PokemonGo.ViewAtraparPokemon: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(CPokemon*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class PokemonGo.ViewDialogo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(System.String, CControlador*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String, CControlador*, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PokemonGo.ViewPerfil: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(CPersonaje*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class PokemonGo.ViewPokedex: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

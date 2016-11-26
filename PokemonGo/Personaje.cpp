@@ -1,8 +1,30 @@
 #include "Personaje.h"
-
+using namespace System;
 
 CPersonaje::CPersonaje(int x, int y)
 {
+	CPokemon *Zapdos = new CPokemon(145, 200, 90); MyPokemon.push_back(Zapdos);
+	CPokemon *Moltres = new CPokemon(146, 260, 90); MyPokemon.push_back(Moltres);
+	CPokemon *Articuno = new CPokemon(144, 320, 90); MyPokemon.push_back(Articuno);
+	CPokemon *Mewtow = new CPokemon(150, 380, 90); MyPokemon.push_back(Mewtow);
+	CPokemon *nuevo = new CPokemon(3, 380, 90); MyPokemon.push_back(nuevo);
+	CPokemon *nuevo1 = new CPokemon(13, 380, 90); MyPokemon.push_back(nuevo1);
+	CPokemon *nuevo2 = new CPokemon(52, 380, 90); MyPokemon.push_back(nuevo2);
+	CPokemon *nuevo3 = new CPokemon(6, 380, 90); MyPokemon.push_back(nuevo3);
+	CPokemon *nuevo4 = new CPokemon(128, 380, 90); MyPokemon.push_back(nuevo4);
+	CPokemon *nuevo5 = new CPokemon(4, 380, 90); MyPokemon.push_back(nuevo5);
+	CPokemon *nuevo6 = new CPokemon(9, 380, 90); MyPokemon.push_back(nuevo6);
+
+
+	Pokeball = 5;
+	Pociones = 5;
+	Revivir = 5;
+	Monedas = 0;
+	PolvoEstelar = 500;
+	Caramelo = 15;
+	Experiencia = 0;
+	MaestroPokemon = false;
+
 	this->x = x;
 	this->y = y;
 	dx = 0;
@@ -138,7 +160,6 @@ void CPersonaje::Dibujar(BufferedGraphics ^buffer, Bitmap ^img, int Map[18][40],
 			}
 			if (Map[i][j] == 3){
 				buffer->Graphics->DrawRectangle(Pen2, 0 + (25 * j), 0 + (25 * i), 25, 25);
-
 				if (RecCamina1.IntersectsWith(RecValidar)){
 					objContr->setNivel(1);	this->x = 30;	this->y = 250;
 				}
@@ -162,6 +183,7 @@ void CPersonaje::Dibujar(BufferedGraphics ^buffer, Bitmap ^img, int Map[18][40],
 				buffer->Graphics->DrawRectangle(Pen2, 0 + (25 * j), 0 + (25 * i), 25, 25);
 
 				if (RecCamina1.IntersectsWith(RecValidar)){
+					
 					objContr->setNivel(0);	this->x = 450;	this->y = 400;
 				}
 				if (RecCamina2.IntersectsWith(RecValidar)){
@@ -170,7 +192,27 @@ void CPersonaje::Dibujar(BufferedGraphics ^buffer, Bitmap ^img, int Map[18][40],
 
 			}
 			if (Map[i][j] == 10){
+				Random r;
+				Random Id;
+				int id = Id.Next(1, 151);
+				
 				buffer->Graphics->DrawRectangle(Pen3, 0 + (25 * j), 0 + (25 * i), 25, 25);
+
+				if (RecCamina1.IntersectsWith(RecValidar)){
+					if (r.Next(0,25) == 20){ 
+						CPokemon *nuevo = new CPokemon(id,X, Y);
+						nuevo->Pintar(buffer, id);
+						objContr->Agregar(nuevo);
+						objContr->PintarIniciales(buffer);;
+
+					}
+				}
+				if (RecCamina2.IntersectsWith(RecValidar)){
+					if (r.Next(0, 25) == 20){
+						CPokemon *nuevo = new CPokemon(id, X, Y);
+						nuevo->Pintar(buffer, id);
+					}
+				}
 			}
 			X = X + 25;
 		}
@@ -193,6 +235,8 @@ int  CPersonaje::getPokeball(){ return Pokeball; }
 int  CPersonaje::getPociones(){ return Pociones; }
 int  CPersonaje::getRevivir(){ return Revivir; }
 int  CPersonaje::getMonedas(){ return Monedas; }
+int CPersonaje::getPolvoEstelar(){ return PolvoEstelar; }
+int CPersonaje::getCaramelo(){ return Caramelo; }
 int  CPersonaje::getExperiencia(){ return Experiencia; }
 bool CPersonaje::getMaestroPokemon(){ return MaestroPokemon; }
 	
@@ -200,9 +244,17 @@ void CPersonaje::setPokeball(int valor){ Pokeball = valor; }
 void CPersonaje::setPociones(int valor){ Pociones = valor; }
 void CPersonaje::setRevivir(int valor){ Revivir = valor; }
 void CPersonaje::setMonedas(int valor){ Monedas = valor; }
+void CPersonaje::setPolvoEstelar(int valor){ PolvoEstelar = valor; }
+void CPersonaje::setCaramelo(int valor){ Caramelo = valor; }
 void CPersonaje::setExperiencia(int valor){ Experiencia = valor; }
 void CPersonaje::setMaestroPokemon(bool valor){ MaestroPokemon = valor; }
 
+int CPersonaje::getNPokemon(){ return MyPokemon.size(); }
 CPokemon * CPersonaje::getPokemon(int pos){ return MyPokemon[pos]; }
 
 void CPersonaje::GuardarPokemon(CPokemon *nuevo){ MyPokemon.push_back(nuevo); }
+void CPersonaje::TransferirPokemon(int pos){ MyPokemon.erase(begin(MyPokemon) + pos); }
+void CPersonaje::DarPuntoCosmico(int pos){
+	MyPokemon[pos]->setPuntoCosmico(MyPokemon[pos]->getPuntoCosmico()+100);
+	setPolvoEstelar(getPolvoEstelar()-100);
+}

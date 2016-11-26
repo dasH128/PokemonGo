@@ -1,5 +1,6 @@
 #include "Pokemon.h"
-
+using namespace System;
+using namespace std;
 /*
 1 planta
 2 fuego
@@ -20,8 +21,12 @@ CPokemon::CPokemon(){
 }
 CPokemon::CPokemon(int id, int x, int y)
 {
+	Random r;
 	this->x = x;
 	this->y = y;
+	this->puntoCosmico = r.Next(0, 40)*50;
+	this->nivel = r.Next(0, 25);
+	this->vida = r.Next(130, 250);
 	this->a = 215;
 	this->h = 215;
 	nombre = new char[20];
@@ -365,7 +370,12 @@ bool CPokemon::SelectPokemon(int PosXMouse, int PosYMouse){
 
 	return devolver;
 }
+char* CPokemon::getNombre(){ return nombre; }
+int CPokemon::getId(){ return this->id; }
+int CPokemon::getPuntoCosmico() { return this->puntoCosmico; }
+int CPokemon::getNivel(){ return this->nivel; }
+int CPokemon::getVida(){ return this->vida; }
 
-int CPokemon::getId(){
-	return this->id;
-}
+
+
+void CPokemon::setPuntoCosmico(int valor){ puntoCosmico = valor; }
